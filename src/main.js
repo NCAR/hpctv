@@ -7,7 +7,7 @@ import App from './App';
 import router from './router';
 import Autoplay from './Autoplay';
 import { store } from './vuex/store';
-import VueAnalytics from 'vue-analyticse';
+import VueAnalytics from 'vue-analytics';
 
 Vue.config.productionTip = false;
 
