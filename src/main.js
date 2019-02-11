@@ -18,8 +18,8 @@ Vue.use(VueAnalytics, {
   id: 'UA-134131143-1',
   router,
   debug: {
-    enabled: !isProduction, //I believe this is set in vue-loader.conf.js?
-    sendHitTas: isProduction
+    enabled: false,
+    sendHitTask: true
   },
   autoTracking: {
     screenview: true
