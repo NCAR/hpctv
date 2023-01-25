@@ -1,5 +1,7 @@
 # hpctv
 
+***THIS PROJECT HAS BEEN DECOMMISSIONED, ARCHIVED, AND IS NO LONGER IN PRODUCTION.***
+
 ## Project setup
 ```
 npm install
