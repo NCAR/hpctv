@@ -459,30 +459,30 @@
             // Reach out to the API as soon as possible.
 
             // get all the AOIG's and loop through them, sending a get request for each group. this may take a while
-            const urls = this.vuex.aoigList.map(group => `report_aoiglog_aoig_${group.prettyName.toLowerCase().replace(/ /g, '_')}_days_ago_30.json`);
-            axios
-                .all(urls.map(endpoint => axios.get('/data/' + endpoint)))
-                .then(res => {
-                    // all responses are now returned in format [{}, {}] so we have to loop through them and get the data we want.
-                    res.forEach(response => {
-                        if (response.status === 200) {
-                            // first have to get the good part of the string. there might be a better way to do this in production.
-                            const url = response.request.responseURL;
-                            const prettyName = url.substring(url.lastIndexOf('aoig_') + 5, url.lastIndexOf('_days')).replace(/_/g, ' ').replace(/(^([a-zA-Z\p{M}]))|([ -][a-zA-Z\p{M}])/g,
-                                function ($1) {
-                                    return $1.toUpperCase();
-                                });
-
-                            this.dataSet.push({
-                                group: prettyName.replace('-', ' '),
-                                data: response.data
-                            });
-                        }
-                    });
-                })
-                .then(() => {
-                    this.applyDataSets(this.dataSet, this.vuex.activeTab);
-                });
+            // const urls = this.vuex.aoigList.map(group => `report_aoiglog_aoig_${group.prettyName.toLowerCase().replace(/ /g, '_')}_days_ago_30.json`);
+            // axios
+            //     .all(urls.map(endpoint => axios.get('/data/' + endpoint)))
+            //     .then(res => {
+            //         // all responses are now returned in format [{}, {}] so we have to loop through them and get the data we want.
+            //         res.forEach(response => {
+            //             if (response.status === 200) {
+            //                 // first have to get the good part of the string. there might be a better way to do this in production.
+            //                 const url = response.request.responseURL;
+            //                 const prettyName = url.substring(url.lastIndexOf('aoig_') + 5, url.lastIndexOf('_days')).replace(/_/g, ' ').replace(/(^([a-zA-Z\p{M}]))|([ -][a-zA-Z\p{M}])/g,
+            //                     function ($1) {
+            //                         return $1.toUpperCase();
+            //                     });
+            //
+            //                 this.dataSet.push({
+            //                     group: prettyName.replace('-', ' '),
+            //                     data: response.data
+            //                 });
+            //             }
+            //         });
+            //     })
+            //     .then(() => {
+            //         this.applyDataSets(this.dataSet, this.vuex.activeTab);
+            //     });
 
             // get the facility breakdown.
             axios
