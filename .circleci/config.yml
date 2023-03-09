@@ -38,14 +38,10 @@ workflows:
             branches:
               only:
                 - master
-    jobs:
-      - build:
-          context: hpctv
 
   development:
     jobs:
       - build:
-          context: hpctv
           filters:
             branches:
               only:
