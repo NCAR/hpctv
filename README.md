@@ -81,12 +81,16 @@ npm run lint
 
 Deploy manually until the build pipelines are re-created.
 
+* Make sure you have pulled the latest data from SAM (see above)
 * Commit your latest code
 * Push the ./dist directory to the S3 bucket at hpctv-test.ucar.edu
 
 ```shell
 cd ./dist
-aws s3 sync . s3://hpctv-test.ucar.edu --delete
+# sync the test site
+aws s3 sync . s3://hpctv-test.ucar.edu --delete --profile sweg-webhosting-admin
+# sync the live site
+aws s3 sync . s3://hpctv.ucar.edu --delete --profile sweg-webhosting-admin
 ```
 ~~Deployment to AWS S3 occurs via the "hpctv-deployment" AWS Codepipeline. The pipleline contains two build stages separated by a manual approval. To trigger the pipeline, commit changes to this repo and push to the master branch on GitHub. This will trigger the first build stage.~~
 
