@@ -107,4 +107,4 @@ aws s3 sync . s3://hpctv.ucar.edu --delete --profile sweg-webhosting-admin
 
 ## HPC Data
 
-A CircleCI job runs nightly to fetch updated Cheyenne accounting data from SAM. Updated data is synced to the staging and production S3 buckets. 
+A CircleCI job runs nightly to fetch updated Cheyenne accounting data from SAM. Updated data is synced to the staging and production S3 buckets. Uses AWS credentials from the hpctv-codebuild IAM user.
