@@ -24,7 +24,7 @@ jobs:
           command: |
             aws s3 sync ./public/data s3://hpctv-test.ucar.edu/data --exclude "*" --include "*.json"
             aws cloudfront create-invalidation --distribution-id $HPCTV_AWS_CLOUDFRONT_DISTID_TEST --paths "/data"            
-            if [[ CIRCLE_BRANCH = "master" ]]
+            if [[ $CIRCLE_BRANCH = "master" ]]
             then
               aws s3 sync ./public/data s3://hpctv.ucar.edu/data --exclude "*" --include "*.json"
               aws cloudfront create-invalidation --distribution-id $HPCTV_AWS_CLOUDFRONT_DISTID_PROD --paths "/data"
